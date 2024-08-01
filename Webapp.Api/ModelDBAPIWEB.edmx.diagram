@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="32bcb46a1eb74339972202d562c7ed82" Name="Diagram1">
+        <EntityTypeShape EntityType="DBAPIWEBModel.CLIENTE" Width="1.5" PointX="1.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAPIWEBModel.INVENTARIO" Width="1.5" PointX="3.875" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAPIWEBModel.PROVEEDOR" Width="1.5" PointX="2.875" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAPIWEBModel.VENTA" Width="1.5" PointX="5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBAPIWEBModel.ZAPATILLA" Width="1.5" PointX="6" PointY="0.625" IsExpanded="true" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
