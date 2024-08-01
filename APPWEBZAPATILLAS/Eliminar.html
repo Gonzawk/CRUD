@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <link rel="stylesheet" href="styles/page.css">
+    <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/table.css">
+    <link rel="stylesheet" href="styles/form.css">
+
+</head>
+
+<body>
+
+    <div class="content">
+
+        <header>
+            <img src="img/logoCervantes.png" alt="Institucion Cervantes">
+
+        </header>
+
+        <aside>
+            <nav class="menu">
+                <h4>MENU</h4>
+                <a href="ListadoJS.html">Listado</a>
+                <a href="Alta.html">Alta</a>
+                <a href="Modificar.html">Modificación</a>
+                <a href="Eliminar.html">Eliminación</a>
+
+
+            </nav>
+
+            <p>
+                Programación III <br>Ejemplo CRUD Alumno
+            </p>
+
+            <h5>Prof. Barrionuevo Mario Cesar</h5>
+
+        </aside>
+        <main>
+
+            <section>
+                <h4>Eliminación</h4>
+
+                <form action="">
+
+                    <div id="filtros">
+
+                        <p>
+                            <label for="txtId">Id</label>
+                            <input id="txtId" type="text">
+                            <input type="button" value="Buscar" id="btnBuscar" onclick="Buscar()">
+
+                        </p>
+
+                    </div>
+
+                    <div id="datos">
+                        <p>
+                            <label for="txtMarca">Marca</label>
+                            <input id="txtMarca" type="text">
+                        </p>
+    
+                        <p>
+                            <label for="txtModelo">Modelo</label>
+                            <input id="txtModelo" type="text">
+                        </p>
+                        <p>
+                            <label for="txtTalla">Talla</label>
+                            <input id="txtTalla" type="text">
+                        </p>
+                        <p>
+                            <label for="txtColor">Color</label>
+                            <input id="txtColor" type="text">
+                        </p>
+                        <p>
+                            <label for="txtPrecio">Precio</label>
+                            <input id="txtPrecio" type="text">
+                        </p>
+                        <p>
+                            <input type="button" value="Eliminar" id="btnEliminar" onclick="Eliminar()">
+                        </p>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+
+
+        <footer>
+            <h5>Institucion Cervantes - Analista de Sistema</h5>
+        </footer>
+
+
+
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+    </script>
+
+    <script>
+
+        function Buscar() {
+            const id = document.getElementById("txtId")
+
+            get(parseInt(id.value))
+        }
+
+        function Eliminar() {
+
+
+            const id = document.getElementById("txtId")
+
+
+            del(parseInt(id.value))
+
+
+
+        }
+
+
+        function get(id) {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "http://localhost:53387/api/Zapatilla/" + id,
+                success: function (data) {
+                    console.log(data)
+
+                    const marca = document.getElementById("txtMarca")
+                    const modelo = document.getElementById("txtModelo")
+                    const talla = document.getElementById("txtTalla")
+                    const color = document.getElementById("txtColor")
+                    const precio = document.getElementById("txtPrecio")
+
+
+                    marca.value = data.Marca
+                    modelo.value = data.Modelo
+                    talla.value = data.Talla
+                    color.value = data.Color
+                    precio.value = data.Precio
+
+                }
+
+            })
+
+        }
+
+        function del(id) {
+            $.ajax({
+                type: "Delete",
+                dataType: "json",
+                url: "http://localhost:53387/api/Zapatilla/" + id,
+                success: function (data) {
+                    alert("Proceso Exitos...!!!")
+
+                    const marca = document.getElementById("txtMarca")
+                    const modelo = document.getElementById("txtModelo")
+                    const talla = document.getElementById("txtTalla")
+                    const color = document.getElementById("txtColor")
+                    const precio = document.getElementById("txtPrecio")
+                    const id = document.getElementById("txtId")
+
+                    id.value = ""
+                    nombre.value = ""
+                    apellido.value = ""
+
+
+                }
+            })
+
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

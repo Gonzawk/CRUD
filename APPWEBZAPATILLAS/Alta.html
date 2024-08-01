@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <link rel="stylesheet" href="styles/page.css">
+    <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/table.css">
+    <link rel="stylesheet" href="styles/form.css">
+
+</head>
+
+<body>
+
+    <div class="content">
+
+        <header>
+            <img src="img/logoCervantes.png" alt="Institucion Cervantes">
+
+        </header>
+
+        <aside>
+            <nav class="menu">
+                <h4>MENU</h4>
+                <a href="ListadoJS.html">Listado</a>   
+                <a href="Alta.html">Alta</a>
+                <a href="Modificar.html">Modificación</a>
+                <a href="Eliminar.html">Eliminación</a>
+
+            </nav>
+
+            <p>
+                Programación III <br>Ejemplo CRUD Alumno
+            </p>
+
+            <h5>Prof. Barrionuevo Mario Cesar</h5>
+
+        </aside>
+
+        <main>
+
+            <section>
+                <h4>Alta</h4>
+
+                <button onclick="cambiarTipo('Zapatilla')">Alta Zapatilla</button>
+                <button onclick="cambiarTipo('Cliente')">Alta Cliente</button>
+
+
+                <form id="formAlta" action="">
+                    <div id="formFields">
+                   <!-- <p>
+                        <label for="txtMarca">Marca</label>
+                        <input id="txtMarca" type="text">
+                    </p>
+
+                    <p>
+                        <label for="txtModelo">Modelo</label>
+                        <input id="txtModelo" type="text">
+                    </p>
+                    <p>
+                        <label for="txtTalla">Talla</label>
+                        <input id="txtTalla" type="text">
+                    </p>
+                    <p>
+                        <label for="txtColor">Color</label>
+                        <input id="txtColor" type="text">
+                    </p>
+                    <p>
+                        <label for="txtPrecio">Precio</label>
+                        <input id="txtPrecio" type="text">
+                    </p>  
+
+                </div>
+                    <p>
+                        <input type="button" value="Guardar" id="btnGuardar" onclick="Guardar()">
+                    </p>-->
+                </form>
+
+            </section>
+
+        </main>
+
+        <footer>
+            <h5>Institucion Cervantes - Analista de Sistema</h5>
+        </footer>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+    </script>
+
+    <script>
+
+let tipoActual = 'Zapatilla'; // Tipo de objeto por defecto
+
+        function cambiarTipo(tipo) {
+            tipoActual = tipo;
+            const formFields = document.getElementById("formFields");
+            
+            if (tipo === 'Zapatilla') {
+                formFields.innerHTML = `
+                    <p>
+                        <label for="txtMarca">Marca</label>
+                        <input id="txtMarca" type="text">
+                    </p>
+                    <p>
+                        <label for="txtModelo">Modelo</label>
+                        <input id="txtModelo" type="text">
+                    </p>
+                    <p>
+                        <label for="txtTalla">Talla</label>
+                        <input id="txtTalla" type="text">
+                    </p>
+                    <p>
+                        <label for="txtColor">Color</label>
+                        <input id="txtColor" type="text">
+                    </p>
+                    <p>
+                        <label for="txtPrecio">Precio</label>
+                        <input id="txtPrecio" type="text">
+                    </p>
+                    <p>
+                        <input type="button" value="Guardar Zapatilla" id="btnGuardarZapatilla" onclick="GuardarZapatilla()">
+                    </p>
+                `;
+            } else if (tipo === 'Cliente') {
+                formFields.innerHTML = `
+                    <p>
+                        <label for="txtNombre">Nombre</label>
+                        <input id="txtNombre" type="text">
+                    </p>
+                    <p>
+                        <label for="txtApellido">Apellido</label>
+                        <input id="txtApellido" type="text">
+                    </p>
+                    <p>
+                        <label for="txtEmail">Email</label>
+                        <input id="txtEmail" type="text">
+                    </p>
+                    <p>
+                        <label for="txtTelefono">Telefono</label>
+                        <input id="txtTelefono" type="text">
+                    </p>
+                    <p>
+                        <input type="button" value="Guardar Cliente" id="btnGuardarCliente" onclick="GuardarCliente()">
+                    </p>
+                `;
+            }
+        }
+
+        
+      function limpiarCamposZapatilla() {
+    document.getElementById("txtMarca").value = "";
+    document.getElementById("txtModelo").value = "";
+    document.getElementById("txtTalla").value = "";
+    document.getElementById("txtColor").value = "";
+    document.getElementById("txtPrecio").value = "";
+       }
+
+
+        function GuardarZapatilla() {
+
+
+            const marca = document.getElementById("txtMarca")
+            const modelo = document.getElementById("txtModelo")
+            const talla = document.getElementById("txtTalla")
+            const color = document.getElementById("txtColor")
+            const precio = document.getElementById("txtPrecio")
+
+
+
+
+            obj = {
+                "Marca": marca.value,
+                "Modelo": modelo.value,
+                "Talla": talla.value,
+                "Color": color.value,
+                "Precio": precio.value,
+
+            }
+
+            //  console.log(obj)
+
+            post1(obj)
+
+
+        }
+
+        function post1(obj) {
+
+
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: obj,
+                url: "http://localhost:53387/api/Zapatilla",
+                success: function (data) {
+                    alert("Proceso Exitos...!!!");
+                    limpiarCampos();
+                }
+
+
+            })
+
+        }
+
+
+
+
+        function limpiarCamposCliente() {
+    document.getElementById("txtNombre").value = "";
+    document.getElementById("txtApellido").value = "";
+    document.getElementById("txtEmail").value = "";
+    document.getElementById("txtTelefono").value = "";
+    
+       }
+
+
+        function GuardarCliente() {
+
+
+            const nombre = document.getElementById("txtNombre")
+            const apellido = document.getElementById("txtApellido")
+            const email = document.getElementById("txtEmail")
+            const telefono = document.getElementById("txtTelefono")
+
+
+            obj = {
+                "Nombre": nombre.value,
+                "Apellido": apellido.value,
+                "Email": email.value,
+                "Telefono": telefono.value,
+
+            }
+
+            //  console.log(obj)
+
+            post2(obj)
+
+
+        }
+
+        function post2(obj) {
+
+
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: obj,
+                url: "http://localhost:53387/api/Cliente",
+                success: function (data) {
+                    alert("Proceso Exitos...!!!");
+                    limpiarCamposCliente();
+                }
+
+
+            })
+
+        }
+    </script>
+
+
+
+</body>
+
+</html>
