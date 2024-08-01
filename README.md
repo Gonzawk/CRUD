@@ -14,7 +14,7 @@ Este proyecto incluye una solución en blanco con:
 
 1. Clona el repositorio:
    ```sh
-   git clone https://github.com/yourusername/your-repository-name.git
+   git clone https://github.com/Gonzawk/CRUD.git
 
 2.Configura la cadena de conexión a la base de datos en el archivo de configuración de la API.
 3.Restaura las dependencias y ejecuta la API:
