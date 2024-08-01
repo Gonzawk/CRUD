@@ -1,0 +1,19 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.log
+*.tmp
+
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# Entity Framework Migrations
+Migrations/
+
+# Web Config
+web.config
+web.debug.config
+web.release.config
+
