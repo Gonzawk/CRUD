@@ -40,7 +40,7 @@
         <main>
 
             <section>
-                <h4>Eliminación</h4>
+                <h3>Eliminación</h3>
 
                 <div class="button-group">
                     <button class="type-button" onclick="cambiarTipo('Zapatilla')">Eliminar Zapatilla</button>
@@ -84,6 +84,7 @@
 
             if (tipo === 'Zapatilla') {
                 datosDiv.innerHTML = `
+                <h4>Eliminar Zapatilla<h4>
                     <p>
                         <label for="txtMarca">Marca</label>
                         <input id="txtMarca" type="text" readonly>
@@ -107,6 +108,7 @@
                 `;
             } else if (tipo === 'Cliente') {
                 datosDiv.innerHTML = `
+                <h4>Eliminar Cliente<h4>
                     <p>
                         <label for="txtNombre">Nombre</label>
                         <input id="txtNombre" type="text" readonly>

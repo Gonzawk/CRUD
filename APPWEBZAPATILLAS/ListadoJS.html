@@ -40,10 +40,11 @@
         <main>
 
             <section>
-                <h4>LISTADOS</h4>
+                <h4 id="tituloListado">LISTADOS</h4> <!-- ID para cambiar el título dinámicamente -->
                 <div class="button-group">
                     <button class="type-button" id="btnLstZapatillas" onclick="listarZapatillas()">Zapatillas</button>
                     <button class="type-button" id="btnLstClientes" onclick="listarClientes()">Clientes</button>
+                    <button class="type-button" id="btnLstClientesADO" onclick="listarClientesADO()">Clientes ADO</button>
                 </div>
 
                 <table>
@@ -56,6 +57,11 @@
                         <!-- Los datos se agregarán dinámicamente aquí -->
                     </tbody>
                 </table>
+
+                <!-- Mostrar el total de pares de zapatillas -->
+                <div id="totalPares" style="margin-top: 20px;">
+                    <strong>Total de pares de zapatillas: <span id="paresCount">0</span></strong>
+                </div>
             </section>
 
         </main>
@@ -94,6 +100,9 @@
         }
 
         function listarClientes() {
+            // Restaurar el título a "LISTADOS"
+            document.getElementById("tituloListado").innerText = "LISTADOS";
+
             actualizarEncabezados("Clientes");
 
             fetch("http://localhost:53387/api/Cliente")
@@ -116,6 +125,9 @@
         }
 
         function listarZapatillas() {
+            // Restaurar el título a "LISTADOS"
+            document.getElementById("tituloListado").innerText = "LISTADOS";
+
             actualizarEncabezados("Zapatillas");
 
             fetch("http://localhost:53387/api/Zapatilla")
@@ -123,6 +135,8 @@
                 .then(data => {
                     const tbody = document.querySelector("tbody");
                     tbody.innerHTML = ""; // Limpiar el contenido del tbody
+
+                    let paresCount = 0;  // Variable para contar los pares de zapatillas
 
                     data.forEach(o => {
                         let _tr = `<tr>
@@ -132,6 +146,37 @@
                             <td>${o.Talla}</td>
                             <td>${o.Color}</td>
                             <td>${o.Precio}</td>
+                        </tr>`;
+                        tbody.innerHTML += _tr;
+
+                        // Incrementamos el contador de pares por cada zapatilla
+                        paresCount++;
+                    });
+
+                    // Mostrar el total de pares de zapatillas
+                    document.getElementById('paresCount').innerText = paresCount;
+                });
+        }
+
+        function listarClientesADO() {
+            // Cambiar el título a "LISTADO con ADO"
+            document.getElementById("tituloListado").innerText = "LISTADO con ADO";
+
+            actualizarEncabezados("Clientes");
+
+            fetch("http://localhost:53387/api/CLIENTEE")
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.querySelector("tbody");
+                    tbody.innerHTML = ""; // Limpiar el contenido del tbody
+
+                    data.forEach(o => {
+                        let _tr = `<tr>
+                            <td>${o.ID_Cliente}</td>
+                            <td>${o.Nombre}</td>
+                            <td>${o.Apellido}</td>
+                            <td>${o.Email}</td>
+                            <td>${o.Telefono}</td>
                         </tr>`;
                         tbody.innerHTML += _tr;
                     });

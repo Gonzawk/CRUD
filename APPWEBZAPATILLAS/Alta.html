@@ -39,7 +39,7 @@
 
         <main>
             <section>
-                <h4>Alta</h4>
+                <h3>Alta</h3>
 
                 <div class="button-group">
                     <button class="type-button" onclick="cambiarTipo('Zapatilla')">Alta Zapatilla</button>
@@ -74,6 +74,7 @@
             
             if (tipo === 'Zapatilla') {
                 formFields.innerHTML = `
+                    <h4>Alta de Zapatilla<h4>
                     <p>
                         <label for="txtMarca">Marca</label>
                         <input id="txtMarca" type="text" required>
@@ -97,6 +98,7 @@
                 `;
             } else if (tipo === 'Cliente') {
                 formFields.innerHTML = `
+                <h4>Alta de Cliente<h4>
                     <p>
                         <label for="txtNombre">Nombre</label>
                         <input id="txtNombre" type="text" required>
@@ -107,11 +109,11 @@
                     </p>
                     <p>
                         <label for="txtEmail">Email</label>
-                        <input id="txtEmail" type="email" required>
+                        <input id="txtEmail" type="text" required>
                     </p>
                     <p>
                         <label for="txtTelefono">Teléfono</label>
-                        <input id="txtTelefono" type="tel" required>
+                        <input id="txtTelefono" type="text" required>
                     </p>
                 `;
             }
