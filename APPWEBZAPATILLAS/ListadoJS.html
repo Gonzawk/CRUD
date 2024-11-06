@@ -5,33 +5,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Listados</title>
 
     <link rel="stylesheet" href="styles/page.css">
     <link rel="stylesheet" href="styles/menu.css">
     <link rel="stylesheet" href="styles/table.css">
     <link rel="stylesheet" href="styles/form.css">
-
 </head>
 
 <body>
-
 
     <div class="content">
 
         <header>
             <img src="img/logoCervantes.png" alt="Institucion Cervantes">
-
         </header>
 
         <aside>
             <nav class="menu">
                 <h4>MENU</h4>
-                <a href="ListadoJS.html">Listado</a>   
+                <a href="ListadoJS.html">Listado</a>
                 <a href="Alta.html">Alta</a>
                 <a href="Modificar.html">Modificación</a>
                 <a href="Eliminar.html">Eliminación</a>
-
             </nav>
 
             <p>
@@ -39,48 +35,39 @@
             </p>
 
             <h5>Prof. Barrionuevo Mario Cesar</h5>
-
         </aside>
 
         <main>
 
             <section>
                 <h4>LISTADOS</h4>
-                <button id="btnLstZapatillas" onclick="listarZapatillas()">Zapatillas</button>
-                <button id="btnLstClientes" onclick="listarClientes()">Clientes</button>
-
+                <div class="button-group">
+                    <button class="type-button" id="btnLstZapatillas" onclick="listarZapatillas()">Zapatillas</button>
+                    <button class="type-button" id="btnLstClientes" onclick="listarClientes()">Clientes</button>
+                </div>
 
                 <table>
                     <thead>
                         <tr>
-                        <!---<th>ID Zapatilla</th>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Talla</th>
-                        <th>Color</th>
-                        <th>Precio</th>-->
-                    </tr>
+                            <!-- Encabezados se actualizarán dinámicamente -->
+                        </tr>
                     </thead>
                     <tbody>
-
+                        <!-- Los datos se agregarán dinámicamente aquí -->
                     </tbody>
                 </table>
-
             </section>
+
         </main>
 
         <footer>
             <h5>Institucion Cervantes - Analista de Sistema</h5>
         </footer>
 
-
-
     </div>
 
-
     <script>
-
-function actualizarEncabezados(tipo) {
+        function actualizarEncabezados(tipo) {
             const thead = document.querySelector("thead");
             let encabezados = "";
 
@@ -106,80 +93,50 @@ function actualizarEncabezados(tipo) {
             thead.innerHTML = `<tr>${encabezados}</tr>`;
         }
 
-        function listarClientes()
-        {
+        function listarClientes() {
             actualizarEncabezados("Clientes");
 
-
-
-        fetch("http://localhost:53387/api/Cliente")
-       .then((response) => response.json())
-       .then(data => {
-        console.log(data)
-
-        const tbody = document.querySelector("tbody");
-
-         // Limpiar el contenido del tbody
-         tbody.innerHTML = "";
-
-        data.forEach(o => {
-            let _tr = `<tr>
-            <td>${o.ID_Cliente}</td>
-            <td>${o.Nombre}</td>
-            <td>${o.Apellido}</td>
-            <td>${o.Email}</td>
-            <td>${o.Telefono}</td>
-            
-           
-        </tr>`;
-
-            tbody.innerHTML += _tr;
-        });
-
-
-    })
-
-
-}
-      
-
-        function listarZapatillas() 
-        { 
-            actualizarEncabezados("Zapatillas");
-
-
-
-            fetch("http://localhost:53387/api/Zapatilla")
-                .then((response) => response.json())
+            fetch("http://localhost:53387/api/Cliente")
+                .then(response => response.json())
                 .then(data => {
-                    console.log(data)
-
                     const tbody = document.querySelector("tbody");
-
-                     // Limpiar el contenido del tbody
-                     tbody.innerHTML = "";
+                    tbody.innerHTML = ""; // Limpiar el contenido del tbody
 
                     data.forEach(o => {
                         let _tr = `<tr>
-                        <td>${o.ID_Zapatilla}</td>
-                        <td>${o.Marca}</td>
-                        <td>${o.Modelo}</td>
-                        <td>${o.Talla}</td>
-                        <td>${o.Color}</td>
-                        <td>${o.Precio}</td>
-                       
-                    </tr>`;
-
+                            <td>${o.ID_Cliente}</td>
+                            <td>${o.Nombre}</td>
+                            <td>${o.Apellido}</td>
+                            <td>${o.Email}</td>
+                            <td>${o.Telefono}</td>
+                        </tr>`;
                         tbody.innerHTML += _tr;
                     });
-
-
-                })
-
-
+                });
         }
 
+        function listarZapatillas() {
+            actualizarEncabezados("Zapatillas");
 
+            fetch("http://localhost:53387/api/Zapatilla")
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.querySelector("tbody");
+                    tbody.innerHTML = ""; // Limpiar el contenido del tbody
+
+                    data.forEach(o => {
+                        let _tr = `<tr>
+                            <td>${o.ID_Zapatilla}</td>
+                            <td>${o.Marca}</td>
+                            <td>${o.Modelo}</td>
+                            <td>${o.Talla}</td>
+                            <td>${o.Color}</td>
+                            <td>${o.Precio}</td>
+                        </tr>`;
+                        tbody.innerHTML += _tr;
+                    });
+                });
+        }
     </script>
 
 </body>

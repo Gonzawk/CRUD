@@ -188,6 +188,7 @@
       <DependentUpon>ModelDBAPIWEB.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\CLIENTEEController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\ZapatillaController.cs" />
@@ -212,6 +213,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelDBAPIWEB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\CLIENTE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PROVEEDOR.cs">
       <DependentUpon>ModelDBAPIWEB.tt</DependentUpon>

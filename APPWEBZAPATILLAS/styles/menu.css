@@ -1,12 +1,16 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+
 .menu a {
-    background-color: black;
-    color: white;
-    text-decoration: none;
-    padding: 45px;
-    display: block;
+  padding: 15px;
+  margin: 5px 0;
+  transition: background-color 0.3s;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    width: 100%; /* Ancho completo en pantallas pequeñas */
   }
-  
-  .menu a:hover {
-    background-color: white;
-    color: black;
-  }
+}

@@ -9,12 +9,12 @@ namespace Webapp.Api.Controllers
 {
     public class ClienteController : ApiController
     {
-        // GET: api/Cliente
+        //// GET: api/Cliente
         public List<CLIENTE> Get()
         {
             List<CLIENTE> oList = new List<CLIENTE>();
 
-            using(DBAPIWEBEntities db = new DBAPIWEBEntities())
+            using (DBAPIWEBEntities db = new DBAPIWEBEntities())
             {
                 oList = db.CLIENTE.ToList();
 

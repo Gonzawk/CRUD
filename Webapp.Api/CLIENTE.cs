@@ -11,13 +11,61 @@ namespace Webapp.Api
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data;
+    using System.Data.SqlClient;
+
     public partial class CLIENTE
     {
+
+        #region Atributo    
+
+        string conectionString = @"Data Source=DESKTOP-NTGPWK7;Initial Catalog=DBAPIWEB; Integrated Security= True ";
+
+
+        #endregion
+
+        #region Propiedades
         public int ID_Cliente { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Email { get; set; }
         public string Telefono { get; set; }
+        #endregion
+
+
+
+        #region Metodos 
+
+
+        public DataTable TraerT()
+        {
+            string sqlSentencia = "Cliente_g";
+
+            SqlConnection sqlCnn = new SqlConnection();
+            sqlCnn.ConnectionString = conectionString;
+
+            SqlCommand sqlCom = new SqlCommand(sqlSentencia, sqlCnn);
+            sqlCom.CommandType = CommandType.StoredProcedure;
+
+            sqlCnn.Open();
+
+
+
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = sqlCom;
+
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+
+            sqlCnn.Close();
+
+
+            return ds.Tables[0];
+
+
+
+        }
+        #endregion
     }
 }

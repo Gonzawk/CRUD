@@ -5,14 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Modificar</title>
 
     <link rel="stylesheet" href="styles/page.css">
     <link rel="stylesheet" href="styles/menu.css">
     <link rel="stylesheet" href="styles/table.css">
     <link rel="stylesheet" href="styles/form.css">
-
 </head>
 
 <body>
@@ -21,7 +19,6 @@
 
         <header>
             <img src="img/logoCervantes.png" alt="Institucion Cervantes">
-
         </header>
 
         <aside>
@@ -31,8 +28,6 @@
                 <a href="Alta.html">Alta</a>
                 <a href="Modificar.html">Modificación</a>
                 <a href="Eliminar.html">Eliminación</a>
-
-
             </nav>
 
             <p>
@@ -40,66 +35,31 @@
             </p>
 
             <h5>Prof. Barrionuevo Mario Cesar</h5>
-
         </aside>
 
         <main>
 
-
             <section>
                 <h4>Modificación</h4>
 
-                <button onclick="cambiarTipo('Zapatilla')">Modificar Zapatilla</button>
-                <button onclick="cambiarTipo('Cliente')">Modificar Cliente</button>
+                <div class="button-group">
+                    <button class="type-button" onclick="cambiarTipo('Zapatilla')">Modificar Zapatilla</button>
+                    <button class="type-button" onclick="cambiarTipo('Cliente')">Modificar Cliente</button>
+                </div>
 
-            <form id="formModificar" action="">
-          
+                <form id="formModificar" action="">
 
                     <div id="filtros">
-
                         <p>
                             <label for="txtId">Id</label>
-                            <input id="txtId" type="text">
+                            <input id="txtId" type="text" required>
                             <input type="button" value="Buscar" id="btnBuscar" onclick="Buscar()">
-
                         </p>
-
-
-
-
                     </div>
 
-                    <div id="formFields">
-                    <!--<p>
-                            <label for="txtMarca">Marca</label>
-                            <input id="txtMarca" type="text">
-                        </p>
-                        <p>
-                            <label for="txtModelo">Modelo</label>
-                            <input id="txtModelo" type="text">
-                        </p>
-                        <p>
-                            <label for="txtTalla">Talla</label>
-                            <input id="txtTalla" type="text">
-                        </p>
-                        <p>
-                            <label for="txtColor">Color</label>
-                            <input id="txtColor" type="text">
-                        </p>
-                        <p>
-                            <label for="txtPrecio">Precio</label>
-                            <input id="txtPrecio" type="text">
-                        </p>
+                    <div id="formFields"></div>
 
-                        <p>
-                            <input type="button" value="Modificar" id="btnModificar" onclick="Modificar()">
-                        </p>
-                        -->
-
-                    </div>
-
-            </form>
-
+                </form>
             </section>
 
         </main>
@@ -108,28 +68,17 @@
             <h5>Institucion Cervantes - Analista de Sistema</h5>
         </footer>
 
-
-
     </div>
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
-    </script>
-
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script>
+        let tipoActual = 'Zapatilla';
 
-      
-       let tipoActual = 'Zapatilla'; // Tipo de objeto por defecto 
-
-
-
-
-       function cambiarTipo(tipo) {
+        function cambiarTipo(tipo) {
             tipoActual = tipo;
             const formFields = document.getElementById("formFields");
-            
+
             if (tipo === 'Zapatilla') {
                 formFields.innerHTML = `
                     <p>
@@ -152,9 +101,9 @@
                         <label for="txtPrecio">Precio</label>
                         <input id="txtPrecio" type="text">
                     </p>
-                    <p>
+                    <div class="form-actions">
                         <input type="button" value="Modificar Zapatilla" id="btnModificarZapatilla" onclick="ModificarZapatilla()">
-                    </p>
+                    </div>
                 `;
             } else if (tipo === 'Cliente') {
                 formFields.innerHTML = `
@@ -174,32 +123,14 @@
                         <label for="txtTelefono">Telefono</label>
                         <input id="txtTelefono" type="text">
                     </p>
-                    <p>
+                    <div class="form-actions">
                         <input type="button" value="Modificar Cliente" id="btnModificarCliente" onclick="ModificarCliente()">
-                    </p>
+                    </div>
                 `;
             }
         }
 
-
-        function limpiarCamposZapatilla() {
-    document.getElementById("txtMarca").value = "";
-    document.getElementById("txtModelo").value = "";
-    document.getElementById("txtTalla").value = "";
-    document.getElementById("txtColor").value = "";
-    document.getElementById("txtPrecio").value = "";
-       }
-
-       function limpiarCamposCliente() {
-    document.getElementById("txtNombre").value = "";
-    document.getElementById("txtApellido").value = "";
-    document.getElementById("txtEmail").value = "";
-    document.getElementById("txtTelefono").value = "";
-       }
-
-
-      
-       function Buscar() {
+        function Buscar() {
             const id = document.getElementById("txtId");
             if (tipoActual === 'Zapatilla') {
                 getZapatilla(parseInt(id.value));
@@ -207,45 +138,25 @@
                 getCliente(parseInt(id.value));
             }
         }
-     //  function Buscar() {
-        //    const id = document.getElementById("txtId")
-         //
-          //  get(parseInt(id.value))
-        //}
-
-
 
         function ModificarZapatilla() {
+            const id = document.getElementById("txtId");
+            const marca = document.getElementById("txtMarca");
+            const modelo = document.getElementById("txtModelo");
+            const talla = document.getElementById("txtTalla");
+            const color = document.getElementById("txtColor");
+            const precio = document.getElementById("txtPrecio");
 
-            const id = document.getElementById("txtId")
-
-           const marca = document.getElementById("txtMarca")
-           const modelo = document.getElementById("txtModelo")
-           const talla = document.getElementById("txtTalla")
-           const color = document.getElementById("txtColor")
-           const precio = document.getElementById("txtPrecio")
-
-
-
-
-            obj = {
+            const obj = {
                 "Marca": marca.value,
                 "Modelo": modelo.value,
                 "Talla": talla.value,
                 "Color": color.value,
                 "Precio": precio.value,
+            };
 
-            }
-
-
-            putZapatilla(parseInt(id.value), obj)
-
+            putZapatilla(parseInt(id.value), obj);
         }
-
-
-       
-
-
 
         function getZapatilla(id) {
             $.ajax({
@@ -253,129 +164,87 @@
                 dataType: "json",
                 url: "http://localhost:53387/api/Zapatilla/" + id,
                 success: function (data) {
-                    console.log(data)
-
-                    const marca = document.getElementById("txtMarca")
-                    const modelo = document.getElementById("txtModelo")
-                    const talla = document.getElementById("txtTalla")
-                    const color = document.getElementById("txtColor")
-                    const precio = document.getElementById("txtPrecio")
-
-                    marca.value = data.Marca
-                    modelo.value = data.Modelo
-                    talla.value = data.Talla
-                    color.value = data.Color
-                    precio.value = data.Precio
-
+                    document.getElementById("txtMarca").value = data.Marca;
+                    document.getElementById("txtModelo").value = data.Modelo;
+                    document.getElementById("txtTalla").value = data.Talla;
+                    document.getElementById("txtColor").value = data.Color;
+                    document.getElementById("txtPrecio").value = data.Precio;
                 }
-
-            })
-
+            });
         }
 
-
-
-
-
         function putZapatilla(id, obj) {
-
-
             $.ajax({
                 type: "PUT",
                 dataType: "json",
                 data: obj,
                 url: "http://localhost:53387/api/Zapatilla/" + id,
-                success: function (data) {
-                    alert("Zapatilla modificada correctamente!!!!!");
+                success: function () {
+                    alert("Zapatilla modificada correctamente!");
                     limpiarCamposZapatilla();
                 }
-
-
-            })
-
+            });
         }
 
-
-
-
-
-           
         function ModificarCliente() {
+            const id = document.getElementById("txtId");
+            const nombre = document.getElementById("txtNombre");
+            const apellido = document.getElementById("txtApellido");
+            const email = document.getElementById("txtEmail");
+            const telefono = document.getElementById("txtTelefono");
 
-const id = document.getElementById("txtId")
+            const obj = {
+                "Nombre": nombre.value,
+                "Apellido": apellido.value,
+                "Email": email.value,
+                "Telefono": telefono.value
+            };
 
-const nombre = document.getElementById("txtNombre")
-const apellido = document.getElementById("txtApellido")
-   const email = document.getElementById("txtEmail")
-  const telefono = document.getElementById("txtTelefono")
+            putCliente(parseInt(id.value), obj);
+        }
 
+        function getCliente(id) {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "http://localhost:53387/api/Cliente/" + id,
+                success: function (data) {
+                    document.getElementById("txtNombre").value = data.Nombre;
+                    document.getElementById("txtApellido").value = data.Apellido;
+                    document.getElementById("txtEmail").value = data.Email;
+                    document.getElementById("txtTelefono").value = data.Telefono;
+                }
+            });
+        }
 
+        function putCliente(id, obj) {
+            $.ajax({
+                type: "PUT",
+                dataType: "json",
+                data: obj,
+                url: "http://localhost:53387/api/Cliente/" + id,
+                success: function () {
+                    alert("Cliente modificado correctamente!");
+                    limpiarCamposCliente();
+                }
+            });
+        }
 
+        function limpiarCamposZapatilla() {
+            document.getElementById("txtMarca").value = "";
+            document.getElementById("txtModelo").value = "";
+            document.getElementById("txtTalla").value = "";
+            document.getElementById("txtColor").value = "";
+            document.getElementById("txtPrecio").value = "";
+        }
 
-   obj = {
-  "Nombre": nombre.value,
-  "Apellido": apellido.value,
-   "Email": email.value,
-   "Telefono": telefono.value
-      }
-
-
-     putCliente(parseInt(id.value), obj)
-
-} 
-
-
-
-function getCliente(id) {
- $.ajax({
-     type: "GET",
-     dataType: "json",
-     url: "http://localhost:53387/api/Cliente/" + id,
-     success: function (data) {
-         console.log(data)
-
-         const nombre = document.getElementById("txtNombre")
-         const apellido = document.getElementById("txtApellido")
-         const email = document.getElementById("txtEmail")
-         const telefono = document.getElementById("txtTelefono")
-         
-
-         nombre.value = data.Nombre
-         apellido.value = data.Apellido
-         email.value = data.Email
-         telefono.value = data.Telefono
-         
-
-     }
-
- })
-
-}
-
-function putCliente(id, obj) {
-
-
-$.ajax({
-    type: "PUT",
-    dataType: "json",
-    data: obj,
-    url: "http://localhost:53387/api/Cliente/" + id,
-    success: function (data) {
-        alert("Cliente modificado correctamente!!!!!!");
-        limpiarCamposCliente();
-    }
-
-
-})
-
-}
-
+        function limpiarCamposCliente() {
+            document.getElementById("txtNombre").value = "";
+            document.getElementById("txtApellido").value = "";
+            document.getElementById("txtEmail").value = "";
+            document.getElementById("txtTelefono").value = "";
+        }
     </script>
-
-
-
-
-
 
 </body>
 

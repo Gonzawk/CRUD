@@ -1,48 +1,31 @@
 body {
-
     background-color: rgb(201, 197, 197);
-    color: white;
+    color: black; /* Cambiar a negro para mejor contraste */
     font-family: Arial, Helvetica, sans-serif;
-
+    margin: 0; /* Eliminar márgenes por defecto */
+    padding: 0; /* Eliminar relleno por defecto */
 }
 
 .content {
-    width: 95%;
-    margin: 0 auto;
+    max-width: 1200px; /* Limitar el ancho del contenedor principal */
+    margin: 0 auto; /* Centrar el contenido */
     overflow: hidden;
-    
+    padding: 20px; /* Agregar un poco de espacio interior */
 }
 
 header {
-    background-color: black;
-    width: 100%;
-    height: 100px;
-    float: left;
-    margin-bottom: 1%;
+    background-color:white;
+    padding: 20px; /* Espacio interno */
+    text-align: center; /* Centrar el logo */
 }
 
 aside {
-    background-color: rgb(3, 3, 124);
+    background-color:white;
     width: 20%;
     min-height: 450px;
     float: left;
-}
-
-aside p {
-
-    text-align: center;
-    margin-top: 30px;
-
-}
-
-aside h5 {
-
-    text-align: center;
-    margin-top: 35px;
-}
-
-aside h4 {
-    margin-left: 10px;
+    padding: 20px; /* Espacio interno */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra para profundidad */
 }
 
 main {
@@ -53,18 +36,87 @@ main {
     float: left;
     padding: 20px;
     box-sizing: border-box;
-
+    margin-left: 20px; /* Espacio entre aside y main */
 }
 
 footer {
-    background-color: black;
-    width: 100%;
-    height: 50px;
-    float: left;
-    margin-top: 1%;
+    background-color: white;
+    color: white;
+    text-align: center;
+    padding: 15px; /* Espacio interno */
+    margin-top: 20px; /* Espacio superior */
+}
+
+h4, h5 {
+    margin-bottom: 20px; /* Espacio inferior entre títulos */
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header, footer {
+    background-color: white;
+    padding: 20px;
     text-align: center;
 }
 
-section {
-    margin-left: 10PX;
+aside, main {
+    background-color: white;
+    min-height: 450px;
+    padding: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+}
+
+aside {
+    width: 20%;
+    float: left;
+}
+
+main {
+    width: 75%;
+    margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+    aside, main {
+        width: 100%; /* Apilar en pantallas pequeñas */
+        float: none;
+        margin-left: 0;
+    }
+}
+
+footer {
+    margin-top: 20px;
+}
+
+h4, h5 {
+    margin-bottom: 20px;
+}
+
+.button-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Asegura que los botones se envuelvan */
+}
+
+.list-button {
+    flex: 1; /* Botones se expanden equitativamente */
+    margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+    .list-button {
+        margin-right: 0; /* Sin margen derecho en pantallas pequeñas */
+        margin-bottom: 10px; /* Margen inferior en pantallas pequeñas */
+    }
 }
