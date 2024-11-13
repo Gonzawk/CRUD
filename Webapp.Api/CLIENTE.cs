@@ -30,6 +30,7 @@ namespace Webapp.Api
         public string Apellido { get; set; }
         public string Email { get; set; }
         public string Telefono { get; set; }
+        public object TraerId { get; internal set; }
         #endregion
 
 

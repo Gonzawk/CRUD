@@ -11,7 +11,7 @@ using Webapp.Api.Controllers;
 
 namespace Webapp.Api.Modelos
 {
-    public class CLIENTE
+    public class CLIENTE_ADO
     {
         #region Atributo    
 
@@ -69,35 +69,35 @@ namespace Webapp.Api.Modelos
         }
 
 
-        //public DataTable TraerPorID()
-        //{
-        //    string sqlSentencia = "localidad_g";
+        public DataTable TraerPorId()
+        {
+            string sqlSentencia = "Cliente_g";
 
-        //    SqlConnection sqlCnn = new SqlConnection();
-        //    sqlCnn.ConnectionString = conectionString;
+            SqlConnection sqlCnn = new SqlConnection();
+            sqlCnn.ConnectionString = conectionString;
 
-        //    SqlCommand sqlCom = new SqlCommand(sqlSentencia, sqlCnn);
+            SqlCommand sqlCom = new SqlCommand(sqlSentencia, sqlCnn);
 
-        //    sqlCom.CommandType = CommandType.StoredProcedure;
-        //    sqlCom.Parameters.Add("@Id", SqlDbType.Int).Value = localidad_id;
+            sqlCom.CommandType = CommandType.StoredProcedure;
+            sqlCom.Parameters.Add("@Id", SqlDbType.Int).Value = id_cliente;
 
-        //    sqlCnn.Open();
-
-
-
-        //    SqlDataAdapter da = new SqlDataAdapter();
-        //    da.SelectCommand = sqlCom;
-
-        //    DataSet ds = new DataSet();
-        //    da.Fill(ds);
+            sqlCnn.Open();
 
 
-        //    sqlCnn.Close();
+
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = sqlCom;
+
+            DataSet ds = new DataSet();
+            da.Fill(ds);
 
 
-        //    return ds.Tables[0];
+            sqlCnn.Close();
 
-        //}
+
+            return ds.Tables[0];
+
+        }
 
         //public void Guardar()
         //{
