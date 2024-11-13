@@ -1,15 +1,74 @@
-input[type=text] {
-  width: 100%; /* Cambiado a 100% para ser responsivo */
-  max-width: 400px; /* Limitar ancho máximo */
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  transition: border-color 0.3s;
+/* form.css */
+form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-input[type=button] {
-  width: 100%; /* Cambiado a 100% para ser responsivo */
-  max-width: 200px; /* Limitar ancho máximo */
+.form-fields p {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: #555;
+  box-shadow: 0 0 8px rgba(85, 85, 85, 0.3);
+  outline: none;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 20px;
+}
+
+input[type="button"] {
+  padding: 10px 20px;
+  background-color: #555;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1em;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+input[type="button"]:hover {
+  background-color: #333;
+}
+
+input[type="button"]:active {
+  transform: scale(0.98);
+}
+
+/* Botones de selección */
+.type-button {
+  margin: 5px;
+  padding: 10px 15px;
+  background-color: #555;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.type-button:hover {
+  background-color: #333;
 }

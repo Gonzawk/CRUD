@@ -15,7 +15,7 @@ namespace Webapp.Api.Modelos
     {
         #region Atributo    
 
-        string conectionString = @"Data Source=DESKTOP-NTGPWK7;Initial Catalog=DBAPIWEB; Integrated Security= True ";
+        string conectionString = @"Data Source=DESKTOP-MRGPWK77\SQLEXPRESS;Initial Catalog=DBAPIWEB; Integrated Security= True ";
 
 
         #endregion

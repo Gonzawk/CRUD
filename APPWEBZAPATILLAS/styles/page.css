@@ -1,122 +1,70 @@
+/* page.css */
 body {
-    background-color: rgb(201, 197, 197);
-    color: black; /* Cambiar a negro para mejor contraste */
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0; /* Eliminar márgenes por defecto */
-    padding: 0; /* Eliminar relleno por defecto */
-}
-
-.content {
-    max-width: 1200px; /* Limitar el ancho del contenedor principal */
-    margin: 0 auto; /* Centrar el contenido */
-    overflow: hidden;
-    padding: 20px; /* Agregar un poco de espacio interior */
-}
-
-header {
-    background-color:white;
-    padding: 20px; /* Espacio interno */
-    text-align: center; /* Centrar el logo */
-}
-
-aside {
-    background-color:white;
-    width: 20%;
-    min-height: 450px;
-    float: left;
-    padding: 20px; /* Espacio interno */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra para profundidad */
-}
-
-main {
-    background-color: white;
-    color: black;
-    width: 75%;
-    min-height: 450px;
-    float: left;
-    padding: 20px;
-    box-sizing: border-box;
-    margin-left: 20px; /* Espacio entre aside y main */
-}
-
-footer {
-    background-color: white;
-    color: white;
-    text-align: center;
-    padding: 15px; /* Espacio interno */
-    margin-top: 20px; /* Espacio superior */
-}
-
-h4, h5 {
-    margin-bottom: 20px; /* Espacio inferior entre títulos */
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
 }
 
 .content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-header, footer {
-    background-color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-aside, main {
-    background-color: white;
-    min-height: 450px;
-    padding: 20px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    box-sizing: border-box;
-}
-
-aside {
-    width: 20%;
-    float: left;
-}
-
-main {
-    width: 75%;
-    margin-left: 20px;
-}
-
-@media (max-width: 768px) {
-    aside, main {
-        width: 100%; /* Apilar en pantallas pequeñas */
-        float: none;
-        margin-left: 0;
-    }
-}
-
-footer {
-    margin-top: 20px;
-}
-
-h4, h5 {
-    margin-bottom: 20px;
-}
-
-.button-group {
-    margin-bottom: 20px;
     display: flex;
-    flex-wrap: wrap; /* Asegura que los botones se envuelvan */
+    flex-wrap: wrap;
+    max-width: 1200px;
+    width: 100%;
+    margin: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #ffffff;
 }
 
-.list-button {
-    flex: 1; /* Botones se expanden equitativamente */
+/* Encabezado */
+header {
+    width: 100%;
+    padding: 20px;
+    background-color: #333;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+header img {
+    max-width: 200px; /* Aumenta el tamaño del logo aquí */
     margin-right: 10px;
 }
 
-@media (max-width: 768px) {
-    .list-button {
-        margin-right: 0; /* Sin margen derecho en pantallas pequeñas */
-        margin-bottom: 10px; /* Margen inferior en pantallas pequeñas */
-    }
+header h1 {
+    margin: 0;
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: #333;
+    color: #ffffff; /* Color del texto en blanco */
+    font-size: 1em; /* Tamaño de fuente más grande */
+    font-weight: bold; /* Texto en negrita */
+    border-top: 2px solid #555;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    padding: 30px;
+    background-color: #ffffff;
+}
+
+h3, h4, h5 {
+    color: #555;
+    margin-bottom: 15px;
 }
